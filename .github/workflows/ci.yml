@@ -29,5 +29,5 @@ jobs:
           uses: actions/download-artifact@v2
           with:
             name: go-app
-        - name: Deploy to staging environment
-          run: |
+#         - name: Deploy to staging environment
+#           run: |
