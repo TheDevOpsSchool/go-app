@@ -10,11 +10,11 @@ jobs:
     steps: 
     - uses: actions/checkout@master
     - uses: actions/setup-go@v3
-    - run: go version
+    - run: go version    
+    - name: go test
+      run: go test -v . 
     - name: Go build
       run: go build main.go
-    - name: go test
-      run: go test -v       
 ###TODO: setup aws s3 deployment for private
 
 #   deploy-app:
