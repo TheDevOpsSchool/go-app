@@ -10,7 +10,8 @@ jobs:
     steps: 
     - uses: actions/checkout@master
     - uses: actions/setup-go@v3
-    - run: go version    
+    - run: go version
+    - run: go mod init github.com/thedevopschool/go-app
     - name: go test
       run: go test -v . 
     - name: Go build
