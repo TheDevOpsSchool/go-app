@@ -17,9 +17,9 @@ jobs:
       run: go test -v       
 ###TODO: setup aws s3 deployment for private
 
-  deploy-app:
-    runs-on: ubuntu-latest
-    steps: 
-    - uses: 
+#   deploy-app:
+#     runs-on: ubuntu-latest
+#     steps: 
+#     - uses: 
     
   
