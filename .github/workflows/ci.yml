@@ -16,7 +16,7 @@ jobs:
     - name: go test
       run: go test -v .
     - name: Upload artifact to S3 bucket
-    - uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2
       with:
         name: go-app
         path: go-app
