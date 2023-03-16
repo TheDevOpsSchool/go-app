@@ -1,38 +1,34 @@
-name: deploy go app
-on: 
+name: Go
+
+on:
   push:
     branches: [ "development" ]
-  pull_request: 
-    branches: ["development" ]
-jobs: 
-  build-app:
-    runs-on: ubuntu-latest
-    steps: 
-    - uses: actions/checkout@master
-    - uses: actions/setup-go@v3
-    - run: go version
-    - name: Go build
-      run: go build main.go
-    - name: go test
-      run: go test -v       
-###TODO: setup aws s3 deployment for private
+  pull_request:
+    branches: [ "development" ]
 
-  deploy-app:
-    name: Push to EC2 Instance
-    runs-on: ubuntu-latest
+jobs:
 
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v3
 
-      - name: Deploy to my EC2 instance
-        uses: easingthemes/ssh-deploy@v2.1.5
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          SOURCE: "./"
-          REMOTE_HOST: "ec2-34-213-48-149.us-west-2.compute.amazonaws.com"
-          REMOTE_USER: "ec2-user"
-          TARGET: "/home/ec2-user/SampleExpressApp"
-    
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+      
+      - name: init
+        run: go mod init test3
+        
+      - name: tidy
+        run: go mod tidy
+        
+      - name: get
+        run: go get -u github.com/google/go-github/v29
+        
+      - name: Build
+        run: go build -v 1.19
 
-  
+      - name: Test
+        run: go test -v 1.19
