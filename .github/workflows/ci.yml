@@ -15,13 +15,7 @@ jobs:
 #     - name: go test
 #       run: go test -v . 
     - name: Go build
-      run: go build main.go
-###TODO: setup aws s3 deployment for private
-
-  deploy-app:
-    runs-on: ubuntu-latest
-    needs: build-app
-    steps: 
+      run: go build main.go   
     - name: Upload folder to bucket
       uses: a-sync/s3-uploader@master
       with:
@@ -32,6 +26,6 @@ jobs:
         AWS_REGION: 'us-east-1'
         S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
 #         S3_KEY: ${{ secrets.S3_KEY }}
-        FILE: .
+        FILE: ./main
 
   
