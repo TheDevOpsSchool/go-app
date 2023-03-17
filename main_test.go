@@ -12,6 +12,7 @@ import (
 func TestTimeHandler(t *testing.T) {
 	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		currentTime := time.Now().Format("2006-01-02 15:04:05")
+		fmt.Print(currentTime)
 		fmt.Printf(w, "The current time is %s", currentTime)
 	})
 
