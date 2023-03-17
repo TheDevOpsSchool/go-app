@@ -15,7 +15,7 @@ jobs:
 #     - name: go test
 #       run: go test -v . 
     - name: Go build
-      run: go build main.go -o thedevopsschool  
+      run: go build . -o thedevopsschool  
     - name: Upload folder to bucket
       uses: a-sync/s3-uploader@master
       with:
