@@ -1,7 +1,7 @@
 package main
 
 import (
-	"io/ioutil"
+// 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -12,7 +12,7 @@ import (
 func TestTimeHandler(t *testing.T) {
 	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		currentTime := time.Now().Format("2006-01-02 15:04:05")
-		fmt.Fprintf(w, "The current time is %s", currentTime)
+		fmt.Printf(w, "The current time is %s", currentTime)
 	})
 
 	req, err := http.NewRequest("GET", "/time", nil)
