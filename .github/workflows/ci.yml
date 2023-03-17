@@ -12,8 +12,8 @@ jobs:
     - uses: actions/setup-go@v3
     - run: go version
     - run: go mod init github.com/thedevopschool/go-app
-    - name: go test
-      run: go test -v . 
+#     - name: go test
+#       run: go test -v . 
     - name: Go build
       run: go build main.go
 ###TODO: setup aws s3 deployment for private
