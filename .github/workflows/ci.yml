@@ -20,6 +20,7 @@ jobs:
 
   deploy-app:
     runs-on: ubuntu-latest
+    needs: build-app
     steps: 
     - name: Upload folder to bucket
       uses: a-sync/s3-uploader@master
