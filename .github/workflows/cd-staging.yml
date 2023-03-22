@@ -1,0 +1,16 @@
+name: push to staging environment
+on: 
+  push:
+    branches: [ "staging" ]
+  pull_request: 
+    branches: ["staging" ]
+jobs: 
+  pull-app:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: setup aws credentials so we can pull the app from s3 bucket
+      uses: actions/download-artifact@v2
+       with:
+          name: go-app
+#     - name: deploy the pulled app in aws ec2
+#       uses:
