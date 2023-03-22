@@ -10,7 +10,7 @@ jobs:
     steps: 
     - name: setup aws credentials so we can pull the app from s3 bucket
       uses: actions/download-artifact@v2
-       with:
-          name: go-app
+      with:
+        name: go-app
 #     - name: deploy the pulled app in aws ec2
 #       uses:
