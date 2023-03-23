@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
     - name: setup aws credentials so we can pull the app from s3 bucket
-      run: ssh -i {{secrets.secrets}} {{secrets.user}}@{{secrets.ip}} sh ./script.sh
+      run: ssh -i {{secrets.SECRETS}} {{secrets.USER}}@{{secrets.IP}} sh ./script.sh
       
