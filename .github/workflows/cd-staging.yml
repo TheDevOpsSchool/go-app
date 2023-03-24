@@ -12,8 +12,9 @@ jobs:
       uses: actions/checkout@v2       
         
     - name: setup aws credentials so we can pull the app from s3 bucket
-      run: |
-        cd .github/workflows
-        chmod 400 ./id_rsa
-        ssh -i ./id_rsa ${{secrets.USER}}@${{secrets.IP}} -y 
-      
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.IP }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.KEY_SSH }}        
+        script: script.sh
