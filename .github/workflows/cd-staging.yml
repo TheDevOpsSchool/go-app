@@ -8,9 +8,11 @@ jobs:
   pull-app:
     runs-on: ubuntu-latest
     steps: 
-    - name: echo secrets
-      run: echo ${{secrets.SSH}}       
+    - name: checkout code
+      uses: actions/checkout@v2       
         
     - name: setup aws credentials so we can pull the app from s3 bucket
-      run: ssh -i ./id_rsa ${{secrets.USER}}@${{secrets.IP}} sh ./script.sh
+      run: |
+        cd .github/workflows
+        ssh -i ./id_rsa ${{secrets.USER}}@${{secrets.IP}} sh ./script.sh
       
