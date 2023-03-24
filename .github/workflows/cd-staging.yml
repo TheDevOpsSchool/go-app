@@ -1,0 +1,30 @@
+name: push to staging environment
+on: 
+  push:
+    branches: [ "staging" ]
+  pull_request: 
+    branches: ["staging" ]
+jobs: 
+  pull-app:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: checkout code
+      uses: actions/checkout@v2       
+        
+    - name: setup aws credentials so we can pull the app from s3 bucket
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.IP }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}        
+        script: |
+          sudo apt update -y; sudo apt install unzip -y
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          sudo ./aws/install
+          export AWS_ACCESS_KEY_ID=AKIA5725TM4TOQASK7MA
+          export AWS_SECRET_ACCESS_KEY=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
+          export AWS_DEFAULT_REGION=us-west-2
+          aws s3 cp s3://go-app/main ~/
+          chmod +x ~/main
+          ~/main &
