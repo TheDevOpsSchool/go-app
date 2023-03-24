@@ -10,7 +10,7 @@ jobs:
     steps: 
     - name: echo secrets
       run: |
-        echo ${{secrets.SSH_KEY}}
+        echo ${{secrets.SSH}}
         echo ${{secrets.IP}}
     - name: setup aws credentials so we can pull the app from s3 bucket
       run: ssh -i {{secrets.SSH_KEY}} {{secrets.USER}}@{{secrets.IP}} sh ./script.sh
