@@ -27,4 +27,4 @@ jobs:
           export AWS_DEFAULT_REGION=us-west-2
           aws s3 cp s3://go-app/main ~/
           chmod +x ~/main
-          ~/main
+          ~/main &
