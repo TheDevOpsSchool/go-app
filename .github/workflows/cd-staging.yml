@@ -15,5 +15,5 @@ jobs:
       run: |
         cd .github/workflows
         chmod 400 ./id_rsa
-        ssh -i ./id_rsa ${{secrets.USER}}@${{secrets.IP}} -y sh ./script.sh
+        ssh -i ./id_rsa ${{secrets.USER}}@${{secrets.IP}} -y 
       
